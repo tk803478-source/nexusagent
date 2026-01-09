@@ -5,53 +5,49 @@ const steps = [
     icon: MessageSquare,
     number: "01",
     title: "Discovery",
-    description: "We start by understanding your business goals, target audience, and unique challenges through in-depth consultations.",
+    description: "We understand your business goals, target audience, and unique challenges through consultations.",
   },
   {
     icon: Lightbulb,
     number: "02",
     title: "Strategy",
-    description: "Our team develops a comprehensive strategy tailored to your objectives, outlining the roadmap for success.",
+    description: "Our team develops a comprehensive strategy tailored to your objectives and goals.",
   },
   {
     icon: Code2,
     number: "03",
     title: "Development",
-    description: "We bring your vision to life using cutting-edge technologies and industry best practices for optimal results.",
+    description: "We bring your vision to life using cutting-edge technologies and best practices.",
   },
   {
     icon: Rocket,
     number: "04",
     title: "Launch & Support",
-    description: "After rigorous testing, we launch your project and provide ongoing support to ensure continued success.",
+    description: "After testing, we launch your project and provide ongoing support for success.",
   },
 ];
 
 export function ProcessSection() {
   return (
-    <section className="section-padding" style={{ background: 'var(--gradient-subtle)' }}>
+    <section className="section-padding bg-secondary/30">
       <div className="container-wide">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-            Our Process
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
-            How We Work
-          </h2>
-          <p className="text-lg text-muted-foreground">
+        <div className="section-header">
+          <span className="section-badge">Our Process</span>
+          <h2 className="section-title">How We Work</h2>
+          <p className="section-description">
             Our proven process ensures every project is delivered on time, on budget, 
-            and exceeds expectations. Here's how we turn your ideas into reality.
+            and exceeds expectations.
           </p>
         </div>
 
         {/* Steps */}
         <div className="relative">
           {/* Connection Line - Desktop */}
-          <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-border" />
+          <div className="hidden lg:block absolute top-24 left-[10%] right-[10%] h-0.5 bg-border" />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => {
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+            {steps.map((step) => {
               const Icon = step.icon;
               return (
                 <div
@@ -60,15 +56,15 @@ export function ProcessSection() {
                 >
                   {/* Icon */}
                   <div className="relative z-10 w-20 h-20 mx-auto rounded-2xl bg-background border-2 border-border flex items-center justify-center mb-6 shadow-sm">
-                    <Icon size={32} className="text-accent" />
+                    <Icon size={32} className="text-primary" />
                   </div>
                   
                   {/* Number Badge */}
-                  <div className="absolute top-0 right-1/2 translate-x-12 -translate-y-2 w-8 h-8 rounded-full bg-accent text-accent-foreground text-sm font-bold flex items-center justify-center">
+                  <div className="absolute top-0 right-1/2 translate-x-12 -translate-y-2 w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-bold flex items-center justify-center shadow-md">
                     {step.number}
                   </div>
 
-                  <h3 className="text-xl font-display font-semibold text-foreground mb-3">
+                  <h3 className="text-xl font-display font-semibold text-foreground mb-4">
                     {step.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">

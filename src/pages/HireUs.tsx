@@ -90,7 +90,7 @@ export default function HireUs() {
   if (submitted) {
     return (
       <Layout>
-        <section className="pt-32 pb-16 md:pt-40 min-h-screen flex items-center" style={{ background: 'var(--gradient-subtle)' }}>
+        <section className="pt-32 pb-16 md:pt-40 min-h-screen flex items-center bg-secondary/30">
           <div className="container-tight text-center">
             <div className="w-20 h-20 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-8">
               <CheckCircle2 size={48} className="text-green-600" />
@@ -98,11 +98,11 @@ export default function HireUs() {
             <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
               Request Submitted Successfully!
             </h1>
-            <p className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto">
+            <p className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
               Thank you for your interest in our services. Our team will review your request 
               and get back to you within 24 hours.
             </p>
-            <Button variant="accent" asChild>
+            <Button asChild>
               <a href="/">
                 Return to Homepage
                 <ArrowRight size={18} />
@@ -117,15 +117,15 @@ export default function HireUs() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary">
         <div className="container-wide text-center text-primary-foreground">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-sm mb-6">
+          <span className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm mb-6">
             Start Your Project
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
             Hire Our Services
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
             Tell us about your project and let our team help you achieve your digital goals. 
             Fill out the form below to get started.
           </p>
@@ -160,8 +160,8 @@ export default function HireUs() {
 
               {/* Contact Information */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Contact Information</h3>
-                <div className="grid md:grid-cols-2 gap-6">
+                <h3 className="text-lg font-semibold text-foreground pb-2 border-b border-border">Contact Information</h3>
+                <div className="grid md:grid-cols-2 gap-6 pt-2">
                   <div className="space-y-2">
                     <Label htmlFor="client_name">Full Name *</Label>
                     <Input
@@ -215,9 +215,9 @@ export default function HireUs() {
 
               {/* Project Details */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Project Details</h3>
+                <h3 className="text-lg font-semibold text-foreground pb-2 border-b border-border">Project Details</h3>
                 
-                <div className="space-y-2">
+                <div className="space-y-2 pt-2">
                   <Label htmlFor="requirements">Project Requirements *</Label>
                   <Textarea
                     id="requirements"
@@ -278,7 +278,6 @@ export default function HireUs() {
                 <Button 
                   type="submit" 
                   size="lg" 
-                  variant="accent"
                   disabled={loading}
                   className="w-full md:w-auto"
                 >
@@ -293,9 +292,9 @@ export default function HireUs() {
                 </Button>
                 <p className="text-sm text-muted-foreground mt-4">
                   By submitting this form, you agree to our{" "}
-                  <a href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</a>
+                  <a href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</a>
                   {" "}and{" "}
-                  <a href="/terms-of-service" className="text-accent hover:underline">Terms of Service</a>.
+                  <a href="/terms-of-service" className="text-primary hover:underline">Terms of Service</a>.
                 </p>
               </div>
             </form>

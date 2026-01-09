@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { 
@@ -111,7 +110,7 @@ export default function Careers() {
   if (submitted) {
     return (
       <Layout>
-        <section className="pt-32 pb-16 md:pt-40 min-h-screen flex items-center" style={{ background: 'var(--gradient-subtle)' }}>
+        <section className="pt-32 pb-16 md:pt-40 min-h-screen flex items-center bg-secondary/30">
           <div className="container-tight text-center">
             <div className="w-20 h-20 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-8">
               <CheckCircle2 size={48} className="text-green-600" />
@@ -119,11 +118,11 @@ export default function Careers() {
             <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
               Application Submitted!
             </h1>
-            <p className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto">
+            <p className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
               Thank you for your interest in joining our team. We will review your application 
               and get back to you within a few days.
             </p>
-            <Button variant="accent" asChild>
+            <Button asChild>
               <a href="/">
                 Return to Homepage
                 <ArrowRight size={18} />
@@ -138,16 +137,15 @@ export default function Careers() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary">
         <div className="container-wide text-center text-primary-foreground">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-sm mb-6">
+          <span className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm mb-6">
             Join Our Team
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-            Build Your Career
-            <span className="text-gradient block">With Us</span>
+            Build Your Career With Us
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
             Join a team of passionate innovators working on exciting projects for clients worldwide. 
             We offer remote-friendly positions with great benefits.
           </p>
@@ -157,12 +155,12 @@ export default function Careers() {
       {/* Benefits */}
       <section className="section-padding bg-background">
         <div className="container-wide">
-          <div className="text-center mb-12">
+          <div className="text-center mb-14">
             <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4">
               Why Work With Us
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              We believe in creating an environment where talented individuals can thrive and do their best work.
+            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              We believe in creating an environment where talented individuals can thrive.
             </p>
           </div>
           
@@ -170,9 +168,9 @@ export default function Careers() {
             {benefits.map((benefit) => {
               const Icon = benefit.icon;
               return (
-                <div key={benefit.title} className="text-center p-6">
-                  <div className="w-14 h-14 mx-auto rounded-2xl bg-accent/10 flex items-center justify-center mb-4">
-                    <Icon size={28} className="text-accent" />
+                <div key={benefit.title} className="text-center p-6 rounded-2xl hover:bg-secondary/50 transition-colors">
+                  <div className="w-14 h-14 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <Icon size={28} className="text-primary" />
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">{benefit.title}</h3>
                   <p className="text-sm text-muted-foreground">{benefit.description}</p>
@@ -184,9 +182,9 @@ export default function Careers() {
       </section>
 
       {/* Open Positions */}
-      <section className="section-padding" style={{ background: 'var(--gradient-subtle)' }}>
+      <section className="section-padding bg-secondary/30">
         <div className="container-wide">
-          <div className="text-center mb-12">
+          <div className="text-center mb-14">
             <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4">
               Open Positions
             </h2>
@@ -202,8 +200,8 @@ export default function Careers() {
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
                       <div className="flex items-center gap-3 mb-2">
-                        <Briefcase size={20} className="text-accent" />
-                        <span className="text-sm text-accent font-medium">{position.department}</span>
+                        <Briefcase size={18} className="text-primary" />
+                        <span className="text-sm text-primary font-medium">{position.department}</span>
                       </div>
                       <h3 className="text-xl font-display font-semibold text-foreground mb-2">
                         {position.title}
@@ -218,7 +216,6 @@ export default function Careers() {
                       )}
                     </div>
                     <Button 
-                      variant="accent" 
                       onClick={() => handleApply(position)}
                       className="md:flex-shrink-0"
                     >
@@ -233,9 +230,9 @@ export default function Careers() {
             <div className="text-center py-12">
               <p className="text-muted-foreground mb-4">No open positions at the moment.</p>
               <p className="text-muted-foreground">
-                Feel free to submit a general application below and we will keep you in mind for future opportunities.
+                Feel free to submit a general application below.
               </p>
-              <Button variant="accent" className="mt-6" onClick={() => setShowForm(true)}>
+              <Button className="mt-6" onClick={() => setShowForm(true)}>
                 Submit General Application
               </Button>
             </div>
@@ -342,7 +339,7 @@ export default function Careers() {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell us about yourself and why you would be a great fit for our team..."
+                    placeholder="Tell us about yourself and why you would be a great fit..."
                     rows={4}
                     className="resize-none"
                   />
@@ -352,7 +349,6 @@ export default function Careers() {
                   <Button 
                     type="submit" 
                     size="lg" 
-                    variant="accent"
                     disabled={loading}
                     className="w-full md:w-auto"
                   >
@@ -365,7 +361,7 @@ export default function Careers() {
                   </Button>
                   <p className="text-sm text-muted-foreground mt-4">
                     By submitting this form, you agree to our{" "}
-                    <a href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</a>.
+                    <a href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</a>.
                   </p>
                 </div>
               </form>

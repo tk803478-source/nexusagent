@@ -8,11 +8,7 @@ import {
   Video, 
   Bot, 
   ArrowRight, 
-  CheckCircle2,
-  Code2,
-  LineChart,
-  Palette,
-  Zap
+  CheckCircle2
 } from "lucide-react";
 
 const services = [
@@ -21,7 +17,7 @@ const services = [
     icon: Globe,
     name: "Web Development",
     tagline: "Custom websites that convert visitors into customers",
-    description: "Transform your digital presence with our expert web development services. We specialize in creating responsive, high-performance websites and web applications using the latest technologies including React, Next.js, and modern backend solutions. Our team delivers scalable solutions that grow with your business, from simple landing pages to complex enterprise applications.",
+    description: "Transform your digital presence with our expert web development services. We specialize in creating responsive, high-performance websites and web applications using the latest technologies including React, Next.js, and modern backend solutions.",
     features: [
       "Custom Website Design & Development",
       "E-commerce Solutions & Online Stores",
@@ -45,7 +41,7 @@ const services = [
     icon: Search,
     name: "SEO Optimization",
     tagline: "Dominate search rankings and drive organic traffic",
-    description: "Elevate your online visibility with our comprehensive SEO services. We employ data-driven strategies to improve your search engine rankings, increase organic traffic, and maximize your ROI. Our approach includes technical SEO audits, keyword research, content optimization, and link building strategies tailored to your industry and target audience.",
+    description: "Elevate your online visibility with our comprehensive SEO services. We employ data-driven strategies to improve your search engine rankings, increase organic traffic, and maximize your ROI.",
     features: [
       "Comprehensive SEO Audits",
       "Keyword Research & Strategy",
@@ -69,7 +65,7 @@ const services = [
     icon: Video,
     name: "Video Production",
     tagline: "Captivate audiences with compelling visual stories",
-    description: "Captivate your audience with professional video content. Our video production team creates compelling visual stories that engage viewers and drive results. From promotional videos and social media content to full-scale commercial productions, we handle every aspect of the video creation process with creativity and precision.",
+    description: "Captivate your audience with professional video content. Our video production team creates compelling visual stories that engage viewers and drive results across all platforms.",
     features: [
       "Brand & Corporate Videos",
       "Product Demonstrations",
@@ -93,7 +89,7 @@ const services = [
     icon: Bot,
     name: "AI Solutions",
     tagline: "Harness artificial intelligence for business growth",
-    description: "Harness the power of artificial intelligence to transform your business operations. We develop custom AI solutions including chatbots, automation workflows, data analysis tools, and machine learning models. Our AI services help you streamline processes, enhance customer experiences, and gain competitive advantages in your market.",
+    description: "Harness the power of artificial intelligence to transform your business operations. We develop custom AI solutions including chatbots, automation workflows, and machine learning models.",
     features: [
       "Custom AI Chatbots & Assistants",
       "Process Automation",
@@ -131,16 +127,15 @@ export default function Services() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary">
         <div className="container-wide text-center text-primary-foreground">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-sm mb-6">
+          <span className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm mb-6">
             Our Services
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-            Comprehensive Digital
-            <span className="text-gradient block">Solutions</span>
+            Comprehensive Digital Solutions
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
             From strategy to execution, we provide end-to-end digital services 
             that help businesses thrive in the modern marketplace.
           </p>
@@ -156,22 +151,21 @@ export default function Services() {
           <section 
             key={service.id} 
             id={service.id}
-            className={`section-padding ${isEven ? 'bg-background' : ''}`}
-            style={!isEven ? { background: 'var(--gradient-subtle)' } : undefined}
+            className={`section-padding ${isEven ? 'bg-background' : 'bg-secondary/30'}`}
           >
             <div className="container-wide">
-              <div className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
+              <div className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
                 {/* Content */}
                 <div className={!isEven ? 'lg:col-start-2' : ''}>
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
-                      <Icon size={28} className="text-accent" />
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Icon size={28} className="text-primary" />
                     </div>
                     <div>
                       <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
                         {service.name}
                       </h2>
-                      <p className="text-accent font-medium">{service.tagline}</p>
+                      <p className="text-primary font-medium">{service.tagline}</p>
                     </div>
                   </div>
                   
@@ -184,7 +178,7 @@ export default function Services() {
                     <ul className="space-y-3">
                       {service.benefits.map((benefit) => (
                         <li key={benefit} className="flex items-start gap-3">
-                          <CheckCircle2 size={20} className="text-accent mt-0.5 flex-shrink-0" />
+                          <CheckCircle2 size={20} className="text-green-500 mt-0.5 flex-shrink-0" />
                           <span className="text-muted-foreground">{benefit}</span>
                         </li>
                       ))}
@@ -192,7 +186,7 @@ export default function Services() {
                   </div>
 
                   <div className="flex flex-wrap items-center gap-4">
-                    <Button size="lg" variant="accent" asChild>
+                    <Button size="lg" asChild>
                       <Link to="/hire-us">
                         Get Started
                         <ArrowRight size={18} />
@@ -205,13 +199,13 @@ export default function Services() {
                 </div>
 
                 {/* Features Card */}
-                <div className={`card-elevated p-8 ${!isEven ? 'lg:col-start-1' : ''}`}>
+                <div className={`card-elevated p-8 lg:p-10 ${!isEven ? 'lg:col-start-1' : ''}`}>
                   <h3 className="text-xl font-semibold text-foreground mb-6">What's Included</h3>
                   <ul className="space-y-4">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-center gap-3">
-                        <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                          <CheckCircle2 size={14} className="text-accent" />
+                        <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <CheckCircle2 size={14} className="text-primary" />
                         </div>
                         <span className="text-foreground">{feature}</span>
                       </li>
@@ -225,12 +219,12 @@ export default function Services() {
       })}
 
       {/* CTA Section */}
-      <section className="section-padding" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="section-padding bg-primary">
         <div className="container-wide text-center text-primary-foreground">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed">
             Let us help you transform your digital presence. Schedule a free consultation 
             to discuss your project requirements and get a custom quote.
           </p>

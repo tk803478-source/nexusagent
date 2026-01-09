@@ -4,16 +4,16 @@ import { Button } from "@/components/ui/button";
 
 export function CTASection() {
   return (
-    <section className="section-padding" style={{ background: 'var(--gradient-hero)' }}>
+    <section className="section-padding bg-primary">
       <div className="container-wide">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Hire Us CTA */}
           <div className="text-primary-foreground">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
               Ready to Start Your
-              <span className="text-gradient block">Next Project?</span>
+              <span className="block mt-2 text-primary-foreground/90">Next Project?</span>
             </h2>
-            <p className="text-lg text-primary-foreground/80 mb-8 max-w-lg">
+            <p className="text-lg text-primary-foreground/80 mb-8 max-w-lg leading-relaxed">
               Let us help you transform your digital presence. From initial concept 
               to final delivery, we are here to guide you every step of the way.
             </p>
@@ -26,10 +26,10 @@ export function CTASection() {
           </div>
 
           {/* Join Team CTA */}
-          <div className="bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-3xl p-8 md:p-10">
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-10">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-14 h-14 rounded-2xl bg-accent flex items-center justify-center">
-                <Users size={28} className="text-accent-foreground" />
+              <div className="w-14 h-14 rounded-2xl bg-green-500 flex items-center justify-center">
+                <Users size={28} className="text-white" />
               </div>
               <div>
                 <h3 className="text-xl font-display font-semibold text-primary-foreground">
@@ -40,18 +40,18 @@ export function CTASection() {
                 </p>
               </div>
             </div>
-            <p className="text-primary-foreground/80 mb-6">
+            <p className="text-primary-foreground/80 mb-6 leading-relaxed">
               Are you a passionate developer, designer, or digital marketer? Join our 
-              growing team and work on exciting projects with clients from around the world.
+              growing team and work on exciting projects with clients worldwide.
             </p>
             <div className="flex flex-wrap gap-3 mb-6">
-              <span className="px-3 py-1 text-sm bg-primary-foreground/10 rounded-full text-primary-foreground/90">
+              <span className="px-3 py-1.5 text-sm bg-white/10 rounded-full text-primary-foreground/90 border border-white/10">
                 Remote-Friendly
               </span>
-              <span className="px-3 py-1 text-sm bg-primary-foreground/10 rounded-full text-primary-foreground/90">
+              <span className="px-3 py-1.5 text-sm bg-white/10 rounded-full text-primary-foreground/90 border border-white/10">
                 Competitive Pay
               </span>
-              <span className="px-3 py-1 text-sm bg-primary-foreground/10 rounded-full text-primary-foreground/90">
+              <span className="px-3 py-1.5 text-sm bg-white/10 rounded-full text-primary-foreground/90 border border-white/10">
                 Growth Opportunities
               </span>
             </div>

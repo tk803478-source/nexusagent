@@ -65,7 +65,6 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     toast({
@@ -86,16 +85,15 @@ export default function Contact() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary">
         <div className="container-wide text-center text-primary-foreground">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-sm mb-6">
+          <span className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm mb-6">
             Contact Us
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-            Let's Start a
-            <span className="text-gradient block">Conversation</span>
+            Let's Start a Conversation
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
             Have a question or want to discuss a project? We would love to hear from you. 
             Reach out and our team will get back to you within 24 hours.
           </p>
@@ -108,10 +106,10 @@ export default function Contact() {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Info */}
             <div className="lg:col-span-1">
-              <h2 className="text-2xl font-display font-bold text-foreground mb-6">
+              <h2 className="text-2xl font-display font-bold text-foreground mb-4">
                 Get in Touch
               </h2>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-muted-foreground mb-8 leading-relaxed">
                 Whether you have a question about our services, pricing, or anything else, 
                 our team is ready to answer all your questions.
               </p>
@@ -121,8 +119,8 @@ export default function Contact() {
                   const Icon = item.icon;
                   const content = (
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                        <Icon size={22} className="text-accent" />
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Icon size={22} className="text-primary" />
                       </div>
                       <div>
                         <div className="text-sm text-muted-foreground mb-1">{item.label}</div>
@@ -151,14 +149,14 @@ export default function Contact() {
                 <div className="space-y-3">
                   <Link 
                     to="/hire-us"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                   >
                     <MessageSquare size={18} />
                     Request a Quote
                   </Link>
                   <Link 
                     to="/careers"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                   >
                     <ArrowRight size={18} />
                     Join Our Team
@@ -250,7 +248,6 @@ export default function Contact() {
                   <Button 
                     type="submit" 
                     size="lg" 
-                    variant="accent"
                     disabled={loading}
                     className="w-full md:w-auto"
                   >
@@ -271,10 +268,10 @@ export default function Contact() {
       </section>
 
       {/* Map Section Placeholder */}
-      <section className="h-[400px] bg-muted flex items-center justify-center">
+      <section className="h-[350px] bg-secondary flex items-center justify-center">
         <div className="text-center">
           <MapPin size={48} className="text-muted-foreground mx-auto mb-4" />
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground font-medium">
             San Francisco, California
           </p>
         </div>
