@@ -6,11 +6,8 @@ import {
   Target, 
   Eye, 
   Heart, 
-  Users, 
-  Award,
-  Clock,
-  Globe,
-  Zap
+  Zap,
+  Award
 } from "lucide-react";
 
 const stats = [
@@ -24,22 +21,22 @@ const values = [
   {
     icon: Target,
     title: "Results-Driven",
-    description: "We focus on delivering measurable outcomes that directly impact your bottom line and business growth.",
+    description: "We focus on delivering measurable outcomes that directly impact your bottom line.",
   },
   {
     icon: Heart,
     title: "Client-First",
-    description: "Your success is our priority. We build lasting partnerships based on trust, transparency, and mutual respect.",
+    description: "Your success is our priority. We build partnerships based on trust and transparency.",
   },
   {
     icon: Zap,
     title: "Innovation",
-    description: "We stay at the forefront of technology, constantly exploring new solutions to give you a competitive edge.",
+    description: "We stay at the forefront of technology, constantly exploring new solutions.",
   },
   {
     icon: Award,
     title: "Excellence",
-    description: "We hold ourselves to the highest standards, ensuring every project we deliver exceeds expectations.",
+    description: "We hold ourselves to the highest standards in every project we deliver.",
   },
 ];
 
@@ -54,18 +51,17 @@ export default function About() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-primary-foreground">
-              <span className="inline-block px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-sm mb-6">
+              <span className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm mb-6">
                 About Us
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-                We Build Digital
-                <span className="text-gradient block">Experiences</span>
+                We Build Digital Experiences
               </h1>
-              <p className="text-lg md:text-xl text-primary-foreground/80 max-w-lg">
+              <p className="text-lg md:text-xl text-primary-foreground/80 max-w-lg leading-relaxed">
                 Nexus Digital Agency is a team of passionate experts dedicated to 
                 helping businesses succeed in the digital world through innovative 
                 technology and creative solutions.
@@ -77,9 +73,9 @@ export default function About() {
               {stats.map((stat) => (
                 <div 
                   key={stat.label}
-                  className="bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-2xl p-6 text-center"
+                  className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center"
                 >
-                  <div className="text-3xl md:text-4xl font-display font-bold text-accent mb-2">
+                  <div className="text-3xl md:text-4xl font-display font-bold text-white mb-2">
                     {stat.value}
                   </div>
                   <div className="text-sm text-primary-foreground/70">{stat.label}</div>
@@ -95,38 +91,26 @@ export default function About() {
         <div className="container-wide">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-                Our Story
-              </span>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
-                From Vision to Reality
-              </h2>
+              <span className="section-badge">Our Story</span>
+              <h2 className="section-title">From Vision to Reality</h2>
             </div>
             
             <div className="prose-agency">
               <p>
                 Nexus Digital Agency was founded with a simple yet powerful vision: to bridge the gap 
                 between businesses and the digital world. In an era where technology evolves at an 
-                unprecedented pace, we recognized that many companies struggled to keep up with the 
-                changing landscape while focusing on their core operations.
+                unprecedented pace, we recognized that many companies struggled to keep up while 
+                focusing on their core operations.
               </p>
               <p>
                 What started as a small team of passionate developers and marketers has grown into 
                 a full-service digital agency serving clients across 15 countries. Our journey has 
-                been marked by continuous learning, adaptation, and an unwavering commitment to 
-                delivering excellence in everything we do.
+                been marked by continuous learning and an unwavering commitment to excellence.
               </p>
               <p>
                 Today, we are proud to have helped over 200 businesses transform their digital 
-                presence, increase their online visibility, and achieve sustainable growth. Our 
-                success is measured not by the number of projects we complete, but by the lasting 
-                impact we create for our clients and their customers.
-              </p>
-              <p>
-                As we look to the future, we remain committed to our founding principles: putting 
-                clients first, embracing innovation, and delivering results that matter. We believe 
-                that every business, regardless of size or industry, deserves access to world-class 
-                digital solutions that can help them thrive in the modern marketplace.
+                presence. Our success is measured not by the number of projects we complete, but 
+                by the lasting impact we create for our clients and their customers.
               </p>
             </div>
           </div>
@@ -134,30 +118,28 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="section-padding" style={{ background: 'var(--gradient-subtle)' }}>
+      <section className="section-padding bg-secondary/30">
         <div className="container-wide">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="card-elevated p-8 md:p-10">
-              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6">
-                <Target size={28} className="text-accent" />
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                <Target size={28} className="text-primary" />
               </div>
               <h3 className="text-2xl font-display font-bold text-foreground mb-4">Our Mission</h3>
               <p className="text-muted-foreground leading-relaxed">
                 To empower businesses with innovative digital solutions that drive growth, enhance 
-                customer experiences, and create lasting competitive advantages. We are committed 
-                to making world-class technology accessible to organizations of all sizes.
+                customer experiences, and create lasting competitive advantages.
               </p>
             </div>
             
             <div className="card-elevated p-8 md:p-10">
-              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6">
-                <Eye size={28} className="text-accent" />
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                <Eye size={28} className="text-primary" />
               </div>
               <h3 className="text-2xl font-display font-bold text-foreground mb-4">Our Vision</h3>
               <p className="text-muted-foreground leading-relaxed">
                 To be the trusted digital partner for businesses worldwide, recognized for our 
-                innovative solutions, exceptional service, and meaningful contributions to our 
-                clients' success. We envision a future where every business can thrive digitally.
+                innovative solutions and meaningful contributions to our clients' success.
               </p>
             </div>
           </div>
@@ -167,16 +149,12 @@ export default function About() {
       {/* Values Section */}
       <section className="section-padding bg-background">
         <div className="container-wide">
-          <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-              Our Values
-            </span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
-              What We Stand For
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="section-header">
+            <span className="section-badge">Our Values</span>
+            <h2 className="section-title">What We Stand For</h2>
+            <p className="section-description">
               Our core values guide everything we do, from how we approach projects 
-              to how we interact with clients and each other.
+              to how we interact with clients.
             </p>
           </div>
           
@@ -184,14 +162,14 @@ export default function About() {
             {values.map((value) => {
               const Icon = value.icon;
               return (
-                <div key={value.title} className="text-center">
-                  <div className="w-16 h-16 mx-auto rounded-2xl bg-accent/10 flex items-center justify-center mb-6">
-                    <Icon size={32} className="text-accent" />
+                <div key={value.title} className="text-center p-6">
+                  <div className="w-16 h-16 mx-auto rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                    <Icon size={32} className="text-primary" />
                   </div>
                   <h3 className="text-xl font-display font-semibold text-foreground mb-3">
                     {value.title}
                   </h3>
-                  <p className="text-muted-foreground">{value.description}</p>
+                  <p className="text-muted-foreground leading-relaxed">{value.description}</p>
                 </div>
               );
             })}
@@ -200,29 +178,25 @@ export default function About() {
       </section>
 
       {/* Team Section */}
-      <section id="team" className="section-padding" style={{ background: 'var(--gradient-subtle)' }}>
+      <section id="team" className="section-padding bg-secondary/30">
         <div className="container-wide">
-          <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-              Our Team
-            </span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
-              Meet the Experts
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our diverse team of specialists brings together decades of combined 
-              experience across design, development, marketing, and strategy.
+          <div className="section-header">
+            <span className="section-badge">Our Team</span>
+            <h2 className="section-title">Meet the Experts</h2>
+            <p className="section-description">
+              Our diverse team brings together decades of combined experience across 
+              design, development, marketing, and strategy.
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((member) => (
               <div key={member.name} className="card-elevated p-6 text-center">
-                <div className="w-20 h-20 mx-auto rounded-full bg-accent/10 flex items-center justify-center text-accent font-semibold text-xl mb-4">
+                <div className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-xl mb-4">
                   {member.name.split(' ').map(n => n[0]).join('')}
                 </div>
                 <h3 className="font-display font-semibold text-foreground mb-1">{member.name}</h3>
-                <p className="text-accent text-sm mb-2">{member.role}</p>
+                <p className="text-primary text-sm font-medium mb-2">{member.role}</p>
                 <p className="text-muted-foreground text-sm">{member.expertise}</p>
               </div>
             ))}
@@ -232,7 +206,7 @@ export default function About() {
             <p className="text-muted-foreground mb-4">
               Want to join our team? We're always looking for talented individuals.
             </p>
-            <Button variant="accent" asChild>
+            <Button asChild>
               <Link to="/careers">
                 View Open Positions
                 <ArrowRight size={18} />
@@ -243,12 +217,12 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="section-padding bg-primary">
         <div className="container-wide text-center text-primary-foreground">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
             Ready to Work Together?
           </h2>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed">
             Let's discuss how we can help your business achieve its digital goals. 
             Schedule a free consultation with our team today.
           </p>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowRight, Calendar, User, Tag, Clock } from "lucide-react";
+import { ArrowRight, Calendar, User } from "lucide-react";
 import { format } from "date-fns";
 
 interface BlogPost {
@@ -46,15 +46,15 @@ export default function Blog() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary">
         <div className="container-wide text-center text-primary-foreground">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-sm mb-6">
+          <span className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm mb-6">
             Our Blog
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
             Insights & Resources
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
             Expert articles, industry insights, and practical guides to help you 
             navigate the digital landscape and grow your business.
           </p>
@@ -69,7 +69,7 @@ export default function Blog() {
               to={`/blog/${featuredPost.slug}`}
               className="group grid lg:grid-cols-2 gap-8 lg:gap-12 items-center card-interactive p-6 md:p-8"
             >
-              <div className="aspect-video rounded-xl bg-accent/10 flex items-center justify-center overflow-hidden">
+              <div className="aspect-video rounded-xl bg-primary/5 flex items-center justify-center overflow-hidden">
                 {featuredPost.cover_image ? (
                   <img 
                     src={featuredPost.cover_image} 
@@ -77,15 +77,15 @@ export default function Blog() {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="text-accent text-6xl font-display font-bold">N</div>
+                  <div className="text-primary text-6xl font-display font-bold">N</div>
                 )}
               </div>
               
               <div>
-                <span className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
                   Featured Article
                 </span>
-                <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 group-hover:text-accent transition-colors">
+                <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
                   {featuredPost.title}
                 </h2>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -107,7 +107,7 @@ export default function Blog() {
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-2 text-accent font-medium">
+                <div className="flex items-center gap-2 text-primary font-medium">
                   Read Article
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -118,7 +118,7 @@ export default function Blog() {
       )}
 
       {/* All Posts Grid */}
-      <section className="section-padding" style={{ background: 'var(--gradient-subtle)' }}>
+      <section className="section-padding bg-secondary/30">
         <div className="container-wide">
           {loading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -132,7 +132,7 @@ export default function Blog() {
             </div>
           ) : otherPosts.length > 0 ? (
             <>
-              <div className="text-center mb-12">
+              <div className="text-center mb-14">
                 <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground">
                   Latest Articles
                 </h2>
@@ -145,7 +145,7 @@ export default function Blog() {
                     to={`/blog/${post.slug}`}
                     className="group card-interactive overflow-hidden"
                   >
-                    <div className="aspect-video bg-accent/10 flex items-center justify-center overflow-hidden">
+                    <div className="aspect-video bg-primary/5 flex items-center justify-center overflow-hidden">
                       {post.cover_image ? (
                         <img 
                           src={post.cover_image} 
@@ -153,7 +153,7 @@ export default function Blog() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (
-                        <div className="text-accent text-4xl font-display font-bold">N</div>
+                        <div className="text-primary text-4xl font-display font-bold">N</div>
                       )}
                     </div>
                     
@@ -163,7 +163,7 @@ export default function Blog() {
                           {post.tags.slice(0, 2).map((tag) => (
                             <span 
                               key={tag}
-                              className="px-2 py-1 text-xs rounded-full bg-accent/10 text-accent"
+                              className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
                             >
                               {tag}
                             </span>
@@ -171,7 +171,7 @@ export default function Blog() {
                         </div>
                       )}
                       
-                      <h3 className="text-lg font-display font-semibold text-foreground mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                      <h3 className="text-lg font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
                         {post.title}
                       </h3>
                       
@@ -200,7 +200,7 @@ export default function Blog() {
               <p className="text-muted-foreground mb-8">
                 We are working on creating valuable content for you. Check back soon!
               </p>
-              <Button variant="accent" asChild>
+              <Button asChild>
                 <Link to="/">
                   Return Home
                 </Link>
@@ -216,17 +216,17 @@ export default function Blog() {
           <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4">
             Stay Updated
           </h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            Get the latest insights, tips, and resources delivered straight to your inbox. 
+          <p className="text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
+            Get the latest insights delivered straight to your inbox. 
             Join our community of forward-thinking business leaders.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 h-12 px-4 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+              className="flex-1 h-12 px-4 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
             />
-            <Button variant="accent" size="lg">
+            <Button size="lg">
               Subscribe
             </Button>
           </div>
