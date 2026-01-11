@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { usePositions } from "@/hooks/usePositions";
 import { 
   CheckCircle2, 
   Send, 
@@ -17,14 +18,6 @@ import {
   Briefcase
 } from "lucide-react";
 
-interface Position {
-  id: string;
-  title: string;
-  department: string;
-  description: string | null;
-  requirements: string | null;
-}
-
 const benefits = [
   { icon: Globe, title: "Remote First", description: "Work from anywhere in the world" },
   { icon: Zap, title: "Flexible Hours", description: "Balance work with your life" },
@@ -34,11 +27,11 @@ const benefits = [
 
 export default function Careers() {
   const { toast } = useToast();
-  const [positions, setPositions] = useState<Position[]>([]);
+  const { positions, loading: positionsLoading } = usePositions();
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [selectedPosition, setSelectedPosition] = useState<Position | null>(null);
+  const [selectedPosition, setSelectedPosition] = useState<typeof positions[0] | null>(null);
   const [formData, setFormData] = useState({
     position_id: "",
     full_name: "",
@@ -50,18 +43,6 @@ export default function Careers() {
     message: "",
   });
 
-  useEffect(() => {
-    async function fetchPositions() {
-      const { data } = await supabase
-        .from('positions')
-        .select('*')
-        .eq('is_open', true);
-      
-      if (data) setPositions(data);
-    }
-    fetchPositions();
-  }, []);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
       ...prev,
@@ -69,7 +50,7 @@ export default function Careers() {
     }));
   };
 
-  const handleApply = (position: Position) => {
+  const handleApply = (position: typeof positions[0]) => {
     setSelectedPosition(position);
     setFormData((prev) => ({ ...prev, position_id: position.id }));
     setShowForm(true);
@@ -103,6 +84,10 @@ export default function Careers() {
       });
     } else {
       setSubmitted(true);
+      toast({
+        title: "Application Submitted!",
+        description: "We'll review your application and get back to you soon.",
+      });
     }
     setLoading(false);
   };
@@ -193,7 +178,17 @@ export default function Careers() {
             </p>
           </div>
 
-          {positions.length > 0 ? (
+          {positionsLoading ? (
+            <div className="grid gap-6 max-w-3xl mx-auto">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="card-elevated p-6 md:p-8 animate-pulse">
+                  <div className="h-6 bg-muted rounded w-1/4 mb-2" />
+                  <div className="h-8 bg-muted rounded w-1/2 mb-4" />
+                  <div className="h-4 bg-muted rounded w-3/4" />
+                </div>
+              ))}
+            </div>
+          ) : positions.length > 0 ? (
             <div className="grid gap-6 max-w-3xl mx-auto">
               {positions.map((position) => (
                 <div key={position.id} className="card-elevated p-6 md:p-8">
