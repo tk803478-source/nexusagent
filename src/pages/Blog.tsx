@@ -1,44 +1,12 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
+import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { ArrowRight, Calendar, User } from "lucide-react";
 import { format } from "date-fns";
 
-interface BlogPost {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string | null;
-  content: string;
-  cover_image: string | null;
-  author: string | null;
-  tags: string[] | null;
-  published_at: string | null;
-  created_at: string;
-}
-
 export default function Blog() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchPosts() {
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('is_published', true)
-        .order('published_at', { ascending: false });
-
-      if (!error && data) {
-        setPosts(data);
-      }
-      setLoading(false);
-    }
-
-    fetchPosts();
-  }, []);
+  const { posts, loading } = useBlogPosts();
 
   const featuredPost = posts[0];
   const otherPosts = posts.slice(1);
