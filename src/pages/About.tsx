@@ -1,53 +1,41 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { 
   ArrowRight, 
   Target, 
   Eye, 
   Heart, 
   Zap,
-  Award
+  Award,
+  Loader2
 } from "lucide-react";
 
-const stats = [
-  { value: "200+", label: "Projects Completed" },
-  { value: "98%", label: "Client Satisfaction" },
-  { value: "50+", label: "Team Members" },
-  { value: "15+", label: "Countries Served" },
-];
-
-const values = [
-  {
-    icon: Target,
-    title: "Results-Driven",
-    description: "We focus on delivering measurable outcomes that directly impact your bottom line.",
-  },
-  {
-    icon: Heart,
-    title: "Client-First",
-    description: "Your success is our priority. We build partnerships based on trust and transparency.",
-  },
-  {
-    icon: Zap,
-    title: "Innovation",
-    description: "We stay at the forefront of technology, constantly exploring new solutions.",
-  },
-  {
-    icon: Award,
-    title: "Excellence",
-    description: "We hold ourselves to the highest standards in every project we deliver.",
-  },
-];
-
-const team = [
-  { name: "Alex Thompson", role: "Founder & CEO", expertise: "Strategy & Vision" },
-  { name: "Sarah Chen", role: "Creative Director", expertise: "Design & Branding" },
-  { name: "Marcus Johnson", role: "Tech Lead", expertise: "Development & Architecture" },
-  { name: "Emily Rodriguez", role: "SEO Director", expertise: "Search & Analytics" },
-];
+const iconMap: Record<string, any> = {
+  Target,
+  Heart,
+  Zap,
+  Award,
+};
 
 export default function About() {
+  const { settings, loading } = useSiteSettings();
+
+  if (loading) {
+    return (
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center">
+          <Loader2 className="animate-spin text-primary" size={32} />
+        </div>
+      </Layout>
+    );
+  }
+
+  const stats = settings.about_stats || [];
+  const values = settings.about_values || [];
+  const team = settings.about_team || [];
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -59,12 +47,10 @@ export default function About() {
                 About Us
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-                We Build Digital Experiences
+                {settings.about_hero_title}
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 max-w-lg leading-relaxed">
-                Nexus Digital Agency is a team of passionate experts dedicated to 
-                helping businesses succeed in the digital world through innovative 
-                technology and creative solutions.
+                {settings.about_hero_description}
               </p>
             </div>
             
@@ -96,22 +82,9 @@ export default function About() {
             </div>
             
             <div className="prose-agency">
-              <p>
-                Nexus Digital Agency was founded with a simple yet powerful vision: to bridge the gap 
-                between businesses and the digital world. In an era where technology evolves at an 
-                unprecedented pace, we recognized that many companies struggled to keep up while 
-                focusing on their core operations.
-              </p>
-              <p>
-                What started as a small team of passionate developers and marketers has grown into 
-                a full-service digital agency serving clients across 15 countries. Our journey has 
-                been marked by continuous learning and an unwavering commitment to excellence.
-              </p>
-              <p>
-                Today, we are proud to have helped over 200 businesses transform their digital 
-                presence. Our success is measured not by the number of projects we complete, but 
-                by the lasting impact we create for our clients and their customers.
-              </p>
+              {settings.about_story?.split('\n\n').map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </div>
@@ -127,8 +100,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-display font-bold text-foreground mb-4">Our Mission</h3>
               <p className="text-muted-foreground leading-relaxed">
-                To empower businesses with innovative digital solutions that drive growth, enhance 
-                customer experiences, and create lasting competitive advantages.
+                {settings.about_mission}
               </p>
             </div>
             
@@ -138,8 +110,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-display font-bold text-foreground mb-4">Our Vision</h3>
               <p className="text-muted-foreground leading-relaxed">
-                To be the trusted digital partner for businesses worldwide, recognized for our 
-                innovative solutions and meaningful contributions to our clients' success.
+                {settings.about_vision}
               </p>
             </div>
           </div>
@@ -160,7 +131,7 @@ export default function About() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value) => {
-              const Icon = value.icon;
+              const Icon = iconMap[value.icon] || Target;
               return (
                 <div key={value.title} className="text-center p-6">
                   <div className="w-16 h-16 mx-auto rounded-2xl bg-primary/10 flex items-center justify-center mb-6">

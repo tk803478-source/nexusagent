@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { 
   Mail, 
   Phone, 
@@ -13,38 +14,20 @@ import {
   Clock, 
   Send,
   MessageSquare,
-  ArrowRight
+  ArrowRight,
+  Loader2
 } from "lucide-react";
 
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "contact@nexusagency.com",
-    href: "mailto:contact@nexusagency.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+1 (234) 567-890",
-    href: "tel:+1234567890",
-  },
-  {
-    icon: MapPin,
-    label: "Address",
-    value: "123 Business Avenue, San Francisco, CA 94102",
-    href: null,
-  },
-  {
-    icon: Clock,
-    label: "Business Hours",
-    value: "Monday - Friday, 9:00 AM - 6:00 PM PST",
-    href: null,
-  },
-];
+const iconMap: Record<string, any> = {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+};
 
 export default function Contact() {
   const { toast } = useToast();
+  const { settings, loading: settingsLoading } = useSiteSettings();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -53,6 +36,33 @@ export default function Contact() {
     subject: "",
     message: "",
   });
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: settings.contact_email,
+      href: `mailto:${settings.contact_email}`,
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: settings.contact_phone,
+      href: `tel:${settings.contact_phone?.replace(/[^+\d]/g, '')}`,
+    },
+    {
+      icon: MapPin,
+      label: "Address",
+      value: settings.contact_address,
+      href: null,
+    },
+    {
+      icon: Clock,
+      label: "Business Hours",
+      value: settings.contact_hours,
+      href: null,
+    },
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
@@ -82,6 +92,16 @@ export default function Contact() {
     setLoading(false);
   };
 
+  if (settingsLoading) {
+    return (
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center">
+          <Loader2 className="animate-spin text-primary" size={32} />
+        </div>
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -91,11 +111,10 @@ export default function Contact() {
             Contact Us
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-            Let's Start a Conversation
+            {settings.contact_hero_title}
           </h1>
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
-            Have a question or want to discuss a project? We would love to hear from you. 
-            Reach out and our team will get back to you within 24 hours.
+            {settings.contact_hero_description}
           </p>
         </div>
       </section>
@@ -272,7 +291,7 @@ export default function Contact() {
         <div className="text-center">
           <MapPin size={48} className="text-muted-foreground mx-auto mb-4" />
           <p className="text-muted-foreground font-medium">
-            San Francisco, California
+            {settings.contact_address?.split(',').slice(-2).join(', ').trim() || "San Francisco, California"}
           </p>
         </div>
       </section>
