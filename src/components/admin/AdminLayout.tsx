@@ -15,6 +15,8 @@ import {
   Menu,
   X,
   ChevronRight,
+  Briefcase,
+  Settings,
 } from "lucide-react";
 
 interface AdminLayoutProps {
@@ -33,6 +35,8 @@ const navItems: NavItem[] = [
   { name: "Service Requests", href: "/admin/requests", icon: ClipboardList },
   { name: "Applications", href: "/admin/applications", icon: Users },
   { name: "Blog Posts", href: "/admin/blog", icon: FileText },
+  { name: "Positions", href: "/admin/positions", icon: Briefcase },
+  { name: "Site Settings", href: "/admin/settings", icon: Settings },
 ];
 
 export function AdminLayout({ children }: AdminLayoutProps) {
