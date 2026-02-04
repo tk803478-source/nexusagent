@@ -11,32 +11,32 @@ const reasons = [
   {
     icon: Target,
     title: "Results-Driven Approach",
-    description: "Every strategy we develop is backed by data and focused on delivering measurable outcomes that directly impact your bottom line. We set clear KPIs and track progress to ensure maximum ROI.",
+    description: "Every strategy we develop is backed by data and focused on delivering measurable outcomes that directly impact your bottom line.",
   },
   {
     icon: Users,
     title: "Dedicated Expert Team",
-    description: "Work with specialists who are passionate about your success. Our team brings years of industry experience and stays current with the latest technologies and best practices.",
+    description: "Work with specialists who are passionate about your success. Our team brings years of industry experience and cutting-edge expertise.",
   },
   {
     icon: Zap,
     title: "Fast Turnaround",
-    description: "Our agile processes ensure quick delivery without compromising on quality. We understand that time is money, and we're committed to meeting deadlines consistently.",
+    description: "Our agile processes ensure quick delivery without compromising on quality. We understand that time is money.",
   },
   {
     icon: Shield,
     title: "Transparent Communication",
-    description: "Stay informed with regular updates and open channels of communication. We believe in building trust through honesty, clarity, and proactive project management.",
+    description: "Stay informed with regular updates and open channels of communication. We believe in building trust through honesty.",
   },
   {
     icon: HeadphonesIcon,
     title: "24/7 Support",
-    description: "Our dedicated support team is available around the clock to address your concerns. We're always just a message away, ensuring your business never skips a beat.",
+    description: "Our dedicated support team is available around the clock to address your concerns. We're always just a message away.",
   },
   {
     icon: TrendingUp,
     title: "Scalable Solutions",
-    description: "We build with growth in mind, ensuring your digital infrastructure can scale seamlessly as your business expands. Future-proof technology that grows with you.",
+    description: "We build with growth in mind, ensuring your digital infrastructure can scale seamlessly as your business expands.",
   },
 ];
 
@@ -46,12 +46,11 @@ export function WhyChooseUsSection() {
       <div className="container-wide">
         {/* Header */}
         <div className="section-header opacity-0-start animate-fade-in-up">
-          <span className="section-badge">Why Choose Us</span>
+          <span className="section-badge">Why Choose NORYX</span>
           <h2 className="section-title">Your Success Is Our Priority</h2>
           <p className="section-description">
-            We combine technical expertise with creative thinking to deliver 
-            solutions that exceed your expectations. Our client-first approach 
-            ensures your goals remain at the center of everything we do.
+            We combine technical expertise with strategic thinking to deliver 
+            AI-powered solutions that exceed expectations.
           </p>
         </div>
 
@@ -62,12 +61,12 @@ export function WhyChooseUsSection() {
             return (
               <div
                 key={reason.title}
-                className={`group text-center p-8 rounded-2xl hover:bg-sky-light/50 transition-all duration-300 hover-lift opacity-0-start animate-fade-in-up delay-${(index + 1) * 100}`}
+                className={`group text-center p-8 rounded-2xl hover:bg-accent/5 transition-all duration-300 hover-lift opacity-0-start animate-fade-in-up delay-${(index + 1) * 100}`}
               >
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-sky-light flex items-center justify-center mb-6 group-hover:bg-navy group-hover:scale-110 transition-all duration-300">
-                  <Icon size={30} className="text-navy group-hover:text-white" />
+                <div className="w-16 h-16 mx-auto rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
+                  <Icon size={30} className="text-accent group-hover:text-accent-foreground" />
                 </div>
-                <h3 className="text-xl font-display font-semibold text-navy mb-4">
+                <h3 className="text-xl font-bold text-foreground mb-4">
                   {reason.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">

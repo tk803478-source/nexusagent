@@ -44,14 +44,14 @@ export function Navbar() {
           <Link
             to="/"
             className={cn(
-              "flex items-center gap-2.5 text-xl md:text-2xl font-display font-bold transition-colors",
-              scrolled ? "text-navy" : "text-white"
+              "flex items-center gap-2.5 text-xl md:text-2xl font-bold tracking-tight transition-colors",
+              scrolled ? "text-foreground" : "text-white"
             )}
           >
-            <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-sky flex items-center justify-center text-navy font-bold text-sm md:text-base">
+            <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-accent flex items-center justify-center text-accent-foreground font-bold text-sm md:text-base">
               N
             </div>
-            <span>Nexus</span>
+            <span>NORYX</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -61,11 +61,11 @@ export function Navbar() {
                 key={link.name}
                 to={link.href}
                 className={cn(
-                  "px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300",
+                  "px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300",
                   location.pathname === link.href
-                    ? scrolled ? "text-navy bg-sky-light" : "text-white bg-white/15"
+                    ? scrolled ? "text-foreground bg-muted" : "text-white bg-white/15"
                     : scrolled 
-                      ? "text-muted-foreground hover:text-navy hover:bg-sky-light/50"
+                      ? "text-muted-foreground hover:text-foreground hover:bg-muted"
                       : "text-white/80 hover:text-white hover:bg-white/10"
                 )}
               >
@@ -81,13 +81,13 @@ export function Navbar() {
               asChild
               className={cn(
                 "transition-all duration-300",
-                !scrolled ? "text-white hover:bg-white/10 hover:text-white" : "text-navy hover:bg-sky-light"
+                !scrolled ? "text-white hover:bg-white/10 hover:text-white" : "text-foreground hover:bg-muted"
               )}
             >
-              <Link to="/careers">Join Our Team</Link>
+              <Link to="/careers">Careers</Link>
             </Button>
-            <Button variant={scrolled ? "default" : "hero"} asChild className="btn-animated">
-              <Link to="/hire-us">Hire Our Services</Link>
+            <Button variant={scrolled ? "accent" : "heroAccent"} asChild className="btn-animated">
+              <Link to="/hire-us">Get Started</Link>
             </Button>
           </div>
 
@@ -95,7 +95,7 @@ export function Navbar() {
           <button
             className={cn(
               "md:hidden p-2 transition-colors",
-              scrolled ? "text-navy" : "text-white"
+              scrolled ? "text-foreground" : "text-white"
             )}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
@@ -113,10 +113,10 @@ export function Navbar() {
                   key={link.name}
                   to={link.href}
                   className={cn(
-                    "block px-4 py-3 text-base font-medium rounded-lg transition-colors",
+                    "block px-4 py-3 text-base font-medium rounded-xl transition-colors",
                     location.pathname === link.href
-                      ? "text-navy bg-sky-light"
-                      : "text-muted-foreground hover:text-navy hover:bg-sky-light/50"
+                      ? "text-foreground bg-muted"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   )}
                 >
                   {link.name}
@@ -124,10 +124,10 @@ export function Navbar() {
               ))}
               <div className="pt-4 mt-2 border-t border-border space-y-2">
                 <Button variant="outline" className="w-full" asChild>
-                  <Link to="/careers">Join Our Team</Link>
+                  <Link to="/careers">Careers</Link>
                 </Button>
-                <Button className="w-full" asChild>
-                  <Link to="/hire-us">Hire Our Services</Link>
+                <Button variant="accent" className="w-full" asChild>
+                  <Link to="/hire-us">Get Started</Link>
                 </Button>
               </div>
             </div>

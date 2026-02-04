@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { PageHero } from "@/components/shared/PageHero";
 import { Button } from "@/components/ui/button";
 import { useServices } from "@/hooks/useServices";
+import heroImage from "@/assets/hero-services.jpg";
 import { 
   Globe, 
   Search, 
@@ -40,26 +42,6 @@ const defaultFeatures: Record<string, string[]> = {
     "Security Implementation",
     "Ongoing Maintenance & Support"
   ],
-  "seo-optimization": [
-    "Comprehensive SEO Audits",
-    "Keyword Research & Strategy",
-    "On-Page SEO Optimization",
-    "Technical SEO Implementation",
-    "Content Strategy & Creation",
-    "Link Building Campaigns",
-    "Local SEO Optimization",
-    "Monthly Performance Reports"
-  ],
-  "video-production": [
-    "Brand & Corporate Videos",
-    "Product Demonstrations",
-    "Social Media Content",
-    "Motion Graphics & Animation",
-    "Video Editing & Post-Production",
-    "Script Writing & Storyboarding",
-    "Voiceover & Sound Design",
-    "Multi-Platform Optimization"
-  ],
   "ai-solutions": [
     "Custom AI Chatbots & Assistants",
     "Process Automation",
@@ -70,6 +52,26 @@ const defaultFeatures: Record<string, string[]> = {
     "Data Analysis & Insights",
     "AI Strategy Consulting"
   ],
+  "automation": [
+    "Workflow Automation",
+    "Data Pipeline Development",
+    "CRM Integration",
+    "Email Marketing Automation",
+    "Custom API Integrations",
+    "Reporting Automation",
+    "Process Optimization",
+    "System Integration"
+  ],
+  "growth-systems": [
+    "Lead Generation Systems",
+    "Marketing Automation",
+    "Sales Funnel Development",
+    "Analytics & Tracking",
+    "A/B Testing Frameworks",
+    "Conversion Optimization",
+    "Customer Journey Mapping",
+    "Performance Dashboards"
+  ],
 };
 
 const defaultBenefits: Record<string, string[]> = {
@@ -79,23 +81,23 @@ const defaultBenefits: Record<string, string[]> = {
     "Build trust with professional, modern design",
     "Scale seamlessly as your business grows"
   ],
-  "seo-optimization": [
-    "Increase organic traffic by up to 300%",
-    "Reduce cost per acquisition",
-    "Build long-term sustainable growth",
-    "Outrank your competitors"
-  ],
-  "video-production": [
-    "Increase engagement by 1200% compared to text",
-    "Boost conversion rates with video content",
-    "Build stronger emotional connections",
-    "Stand out in crowded feeds"
-  ],
   "ai-solutions": [
     "Reduce operational costs by up to 60%",
     "Provide 24/7 customer support",
     "Make data-driven decisions faster",
     "Stay ahead of the competition"
+  ],
+  "automation": [
+    "Save 20+ hours per week on manual tasks",
+    "Eliminate human error in repetitive processes",
+    "Scale operations without increasing headcount",
+    "Focus on high-value strategic work"
+  ],
+  "growth-systems": [
+    "Increase lead generation by up to 300%",
+    "Improve conversion rates across all channels",
+    "Reduce customer acquisition costs",
+    "Build predictable revenue streams"
   ],
 };
 
@@ -123,25 +125,7 @@ export default function Services() {
       icon: "Globe",
       short_description: "Custom websites that convert visitors into customers",
       description: "Transform your digital presence with our expert web development services. We specialize in creating responsive, high-performance websites and web applications using the latest technologies including React, Next.js, and modern backend solutions.",
-      price_from: 999,
-    },
-    {
-      id: "seo-optimization",
-      name: "SEO Optimization",
-      slug: "seo-optimization",
-      icon: "Search",
-      short_description: "Dominate search rankings and drive organic traffic",
-      description: "Elevate your online visibility with our comprehensive SEO services. We employ data-driven strategies to improve your search engine rankings, increase organic traffic, and maximize your ROI.",
-      price_from: 499,
-    },
-    {
-      id: "video-production",
-      name: "Video Production",
-      slug: "video-production",
-      icon: "Video",
-      short_description: "Captivate audiences with compelling visual stories",
-      description: "Captivate your audience with professional video content. Our video production team creates compelling visual stories that engage viewers and drive results across all platforms.",
-      price_from: 799,
+      price_from: 4999,
     },
     {
       id: "ai-solutions",
@@ -150,7 +134,25 @@ export default function Services() {
       icon: "Bot",
       short_description: "Harness artificial intelligence for business growth",
       description: "Harness the power of artificial intelligence to transform your business operations. We develop custom AI solutions including chatbots, automation workflows, and machine learning models.",
-      price_from: 1499,
+      price_from: 9999,
+    },
+    {
+      id: "automation",
+      name: "Automation",
+      slug: "automation",
+      icon: "Code",
+      short_description: "Streamline operations with intelligent automation",
+      description: "Eliminate manual processes and scale your operations with our intelligent automation solutions. From workflow automation to system integrations, we build solutions that save time and reduce errors.",
+      price_from: 2999,
+    },
+    {
+      id: "growth-systems",
+      name: "Growth Systems",
+      slug: "growth-systems",
+      icon: "Megaphone",
+      short_description: "Build predictable revenue with proven systems",
+      description: "Implement data-driven growth systems that generate leads, convert prospects, and retain customers. Our growth frameworks are designed for sustainable, scalable business expansion.",
+      price_from: 4999,
     },
   ];
 
@@ -159,20 +161,13 @@ export default function Services() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary">
-        <div className="container-wide text-center text-primary-foreground">
-          <span className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm mb-6">
-            Our Services
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-            Comprehensive Digital Solutions
-          </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
-            From strategy to execution, we provide end-to-end digital services 
-            that help businesses thrive in the modern marketplace.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Comprehensive AI-Powered"
+        titleAccent="Digital Solutions"
+        subtitle="Web Development • AI Agents • Automation • Growth Systems"
+        image={heroImage}
+        imageAlt="NORYX AI automation and web development services"
+      />
 
       {/* Loading State */}
       {loading && (
@@ -206,21 +201,21 @@ export default function Services() {
           <section 
             key={service.id} 
             id={service.slug}
-            className={`section-padding ${isEven ? 'bg-background' : 'bg-secondary/30'}`}
+            className={`section-padding ${isEven ? 'bg-background' : 'bg-muted/30'}`}
           >
             <div className="container-wide">
               <div className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
                 {/* Content */}
                 <div className={!isEven ? 'lg:col-start-2' : ''}>
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Icon size={28} className="text-primary" />
+                    <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
+                      <Icon size={28} className="text-accent" />
                     </div>
                     <div>
-                      <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
+                      <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                         {service.name}
                       </h2>
-                      <p className="text-primary font-medium">{service.short_description}</p>
+                      <p className="text-accent font-medium">{service.short_description}</p>
                     </div>
                   </div>
                   
@@ -234,7 +229,7 @@ export default function Services() {
                       <ul className="space-y-3">
                         {benefits.map((benefit) => (
                           <li key={benefit} className="flex items-start gap-3">
-                            <CheckCircle2 size={20} className="text-green-500 mt-0.5 flex-shrink-0" />
+                            <CheckCircle2 size={20} className="text-accent mt-0.5 flex-shrink-0" />
                             <span className="text-muted-foreground">{benefit}</span>
                           </li>
                         ))}
@@ -243,7 +238,7 @@ export default function Services() {
                   )}
 
                   <div className="flex flex-wrap items-center gap-4">
-                    <Button size="lg" asChild>
+                    <Button size="lg" variant="accent" asChild>
                       <Link to="/hire-us">
                         Get Started
                         <ArrowRight size={18} />
@@ -251,7 +246,7 @@ export default function Services() {
                     </Button>
                     {service.price_from && (
                       <div className="text-muted-foreground">
-                        Starting from <span className="text-foreground font-semibold">${service.price_from}</span>
+                        Starting from <span className="text-foreground font-semibold">${service.price_from.toLocaleString()}</span>
                       </div>
                     )}
                   </div>
@@ -264,8 +259,8 @@ export default function Services() {
                     <ul className="space-y-4">
                       {features.map((feature) => (
                         <li key={feature} className="flex items-center gap-3">
-                          <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                            <CheckCircle2 size={14} className="text-primary" />
+                          <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                            <CheckCircle2 size={14} className="text-accent" />
                           </div>
                           <span className="text-foreground">{feature}</span>
                         </li>
@@ -282,14 +277,14 @@ export default function Services() {
       {/* CTA Section */}
       <section className="section-padding bg-primary">
         <div className="container-wide text-center text-primary-foreground">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
             Ready to Get Started?
           </h2>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Let us help you transform your digital presence. Schedule a free consultation 
+          <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Let us help you transform your business with AI-powered solutions. Schedule a free consultation 
             to discuss your project requirements and get a custom quote.
           </p>
-          <Button size="xl" variant="hero" asChild>
+          <Button size="xl" variant="heroAccent" asChild>
             <Link to="/hire-us">
               Request a Free Quote
               <ArrowRight size={20} />
