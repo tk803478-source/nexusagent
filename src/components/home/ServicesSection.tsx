@@ -1,48 +1,27 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Globe, Search, Video, Bot, Code, Palette, Megaphone, Shield } from "lucide-react";
+import { ArrowRight, Globe, Bot, Code, Megaphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useServices } from "@/hooks/useServices";
 
 // Icon mapping for dynamic icons
 const iconMap: Record<string, React.ElementType> = {
   Globe,
-  Search,
-  Video,
   Bot,
   Code,
-  Palette,
   Megaphone,
-  Shield,
 };
 
 export function ServicesSection() {
   const { services, loading } = useServices();
 
-  // Fallback services if database is empty
+  // Fallback services - NORYX focused
   const fallbackServices = [
     {
       id: "web-development",
       name: "Web Development",
       slug: "web-development",
       icon: "Globe",
-      short_description: "Build stunning, high-performance websites that captivate visitors and convert them into loyal customers.",
-      description: "Build stunning, high-performance websites that captivate visitors and convert them into loyal customers.",
-    },
-    {
-      id: "seo-optimization",
-      name: "SEO Optimization",
-      slug: "seo-optimization",
-      icon: "Search",
-      short_description: "Dominate search engine rankings with our proven SEO strategies.",
-      description: "Dominate search engine rankings with our proven SEO strategies.",
-    },
-    {
-      id: "video-production",
-      name: "Video Production",
-      slug: "video-production",
-      icon: "Video",
-      short_description: "Tell your brand story through compelling visual content that resonates with your audience.",
-      description: "Tell your brand story through compelling visual content that resonates with your audience.",
+      short_description: "Build stunning, high-performance websites and applications that captivate visitors and convert them into customers.",
     },
     {
       id: "ai-solutions",
@@ -50,23 +29,35 @@ export function ServicesSection() {
       slug: "ai-solutions",
       icon: "Bot",
       short_description: "Harness the power of artificial intelligence to automate workflows and enhance customer experiences.",
-      description: "Harness the power of artificial intelligence to automate workflows and enhance customer experiences.",
+    },
+    {
+      id: "automation",
+      name: "Automation",
+      slug: "automation",
+      icon: "Code",
+      short_description: "Streamline your operations with intelligent automation that saves time and eliminates errors.",
+    },
+    {
+      id: "growth-systems",
+      name: "Growth Systems",
+      slug: "growth-systems",
+      icon: "Megaphone",
+      short_description: "Build predictable revenue with proven lead generation and marketing automation systems.",
     },
   ];
 
   const displayServices = services.length > 0 ? services : (loading ? [] : fallbackServices);
 
   return (
-    <section className="section-padding bg-sky-section">
+    <section className="section-padding bg-muted/30">
       <div className="container-wide">
         {/* Header */}
         <div className="section-header opacity-0-start animate-fade-in-up">
           <span className="section-badge">Our Services</span>
-          <h2 className="section-title">Comprehensive Digital Solutions</h2>
+          <h2 className="section-title">AI-Powered Digital Solutions</h2>
           <p className="section-description">
             From strategy to execution, we provide end-to-end digital services that help 
-            businesses thrive in the modern marketplace. Our expert team delivers measurable 
-            results that drive growth and exceed expectations.
+            businesses thrive. Our expert team delivers measurable results that drive growth.
           </p>
         </div>
 
@@ -74,7 +65,7 @@ export function ServicesSection() {
         {loading ? (
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-14">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="card-interactive p-8 lg:p-10 animate-pulse">
+              <div key={i} className="card-elevated p-8 lg:p-10 animate-pulse">
                 <div className="flex items-start gap-5">
                   <div className="w-14 h-14 rounded-xl bg-muted flex-shrink-0" />
                   <div className="flex-1">
@@ -94,18 +85,18 @@ export function ServicesSection() {
                 <Link
                   key={service.id}
                   to={`/services#${service.slug}`}
-                  className={`group card-interactive p-8 lg:p-10 icon-box-hover opacity-0-start animate-fade-in-up delay-${(index + 1) * 100}`}
+                  className={`group card-interactive p-8 lg:p-10 opacity-0-start animate-fade-in-up delay-${(index + 1) * 100}`}
                 >
                   <div className="flex items-start gap-5">
-                    <div className="icon-box flex-shrink-0">
-                      <Icon size={26} />
+                    <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:scale-105 transition-all duration-300">
+                      <Icon size={26} className="text-accent group-hover:text-accent-foreground" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-display font-semibold text-navy mb-3 group-hover:text-sky transition-colors">
+                      <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
                         {service.name}
                       </h3>
-                      <p className="text-muted-foreground mb-5 leading-relaxed">
-                        {service.short_description || service.description?.substring(0, 150) + "..."}
+                      <p className="text-muted-foreground leading-relaxed">
+                        {service.short_description}
                       </p>
                     </div>
                   </div>
@@ -117,7 +108,7 @@ export function ServicesSection() {
 
         {/* CTA */}
         <div className="text-center opacity-0-start animate-fade-in-up delay-500">
-          <Button size="lg" asChild className="btn-animated">
+          <Button size="lg" variant="accent" asChild className="btn-animated">
             <Link to="/services">
               View All Services
               <ArrowRight size={18} />
